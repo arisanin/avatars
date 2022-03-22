@@ -2,7 +2,7 @@ const React = require('react');
 const { renderToString } = require('react-dom/server');
 const Avatar = require('boring-avatars').default;
 
-const DEFAULT_COLORS = ["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"].join(',');
+const DEFAULT_COLORS = ["#3A0CA3", "#F72585", "#FFBA08", "#4CC9F0", "#9D4EDD"].join(',');
 const DEFAULT_SIZE = 80;
 const DEFAULT_VARIANT = 'marble';
 
