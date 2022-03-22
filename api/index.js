@@ -4,7 +4,7 @@ const Avatar = require('boring-avatars').default;
 
 const DEFAULT_COLORS = ["#3A0CA3", "#F72585", "#FFBA08", "#4CC9F0", "#9D4EDD"].join(',');
 const DEFAULT_SIZE = 80;
-const DEFAULT_VARIANT = 'marble';
+const DEFAULT_VARIANT = 'beam';
 
 const VALID_VARIANTS = new Set([
     'marble', 'beam', 'pixel', 'sunset', 'ring', 'bauhaus'
