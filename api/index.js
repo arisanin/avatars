@@ -4,11 +4,6 @@ const Avatar = require('boring-avatars').default;
 
 const DEFAULT_COLORS = ["#3A0CA3", "#F72585", "#FFBA08", "#4CC9F0", "#9D4EDD"].join(',');
 const DEFAULT_SIZE = 80;
-const DEFAULT_VARIANT = 'beam';
-
-const VALID_VARIANTS = new Set([
-    'marble', 'beam', 'pixel', 'sunset', 'ring', 'bauhaus'
-]);
 
 function normalizeColors(colors) {
     const colorPalette = colors.split(',');
@@ -24,15 +19,11 @@ app.get('/favicon.ico', (req, res) => {
     res.sendStatus(204);
 });
 
-app.get('/:variant?/:size?/:name?', (req, res) => {
-    const { variant = DEFAULT_VARIANT, size = DEFAULT_SIZE } = req.params
+app.get('/:size/:name', (req, res) => {
+    const { size = DEFAULT_SIZE } = req.params
     const name = req.query.name || req.params.name || Math.random().toString();
     const colors = normalizeColors(req.query.colors || DEFAULT_COLORS);
     const square = req.query.hasOwnProperty('square');
-
-    if (!VALID_VARIANTS.has(variant)) {
-        return res.status(400).send('Invalid variant');
-    }
 
     res.setHeader('Content-Type', 'image/svg+xml');
     res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
@@ -41,7 +32,7 @@ app.get('/:variant?/:size?/:name?', (req, res) => {
         React.createElement(Avatar, {
             size,
             name,
-            variant,
+            variant: 'beam', // Use beam variant only. Visit https://boringavatars.com/ for more variants.
             colors,
             square,
         }, null)
