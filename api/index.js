@@ -19,6 +19,12 @@ app.get('/favicon.ico', (req, res) => {
     res.sendStatus(204);
 });
 
+app.get('/', (req, res) => { 
+    res.status(200).json({
+        message: "Server is up and running!"
+    });
+});
+
 app.get('/:size/:name', (req, res) => {
     const { size = DEFAULT_SIZE } = req.params
     const name = req.query.name || req.params.name || Math.random().toString();
